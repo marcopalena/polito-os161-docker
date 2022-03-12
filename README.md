@@ -1,4 +1,5 @@
 # PoliTO OS/161 Docker
+[![Build Status](https://app.travis-ci.com/marcopalena/polito-os161-docker.svg?token=TwUrTvqp6M7vKrhM3xmD&branch=main)](https://app.travis-ci.com/marcopalena/polito-os161-docker)
 A compact Docker image to compile, run and debug the teaching operating system OS/161. Built for the courses "System and Device Programming" (01NYHOV) and "Programmazione di Sistema" (02GRSOV) at Politecnico di Torino. The image is based on Ubuntu 20.04 and contains the following components:
 - OS/161 sources
 - System/161
