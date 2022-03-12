@@ -3,4 +3,14 @@ sudo: required
 services:
   - docker
 script:
-  - echo $TRAVIS_COMMIT
+  - docker pull ${DOCKER_USER}/${DOCKER_REPOSITORY}:latest
+  - docker build --cache-from ${DOCKER_USER}/${DOCKER_REPOSITORY}:latest --tag polito-os161 .
+after_success:
+  - docker login --username ${DOCKER_USER} --password ${DOCKER_PASSWORD}
+  - export TAG=$(if [ "$TRAVIS_BRANCH" == "main" ]; then echo "latest"; else echo ${TRAVIS_BRANCH/\//-}; fi)
+  - docker tag ${DOCKER_REPOSITORY} ${DOCKER_USER}/${DOCKER_REPOSITORY}:${TRAVIS_BUILD_NUMBER}
+  - docker push ${DOCKER_USER}/${DOCKER_REPOSITORY}:${TRAVIS_BUILD_NUMBER}
+  - docker tag ${DOCKER_REPOSITORY} ${DOCKER_USER}/${DOCKER_REPOSITORY}:${TAG}
+  - docker push ${DOCKER_USER}/${DOCKER_REPOSITORY}:${TAG}
+branches:
+  only: main

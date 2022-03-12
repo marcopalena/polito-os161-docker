@@ -13,7 +13,7 @@ docker pull marcopalena/polito-os161:latest
 ## Build the image 
 Alternatively you can build your own image by cloning this repository and building from source:
 ```
-docker build . -t polito-os161
+docker build -t polito-os161 .
 ```
 
 ## Set up a remote development environment
