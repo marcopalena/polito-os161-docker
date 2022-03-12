@@ -50,7 +50,7 @@ docker volume create polito-os161-vol
 You may want to create the volume at a custom location, for instance a location in which your user has full privileges so that you are able to make changes to the OS/161 source both from within the container and from the host. In that case, use the following command instead:
 ```
 mkdir </path/to/custom/volume/location>
-docker volume create --driver local -opt o=bind --opt type=none --opt device=</path/to/custom/volume/location> polito-os161-vol
+docker volume create --driver local --opt o=bind --opt type=none --opt device=</path/to/custom/volume/location> polito-os161-vol
 ```
 You can inspect the volume with:
 ```
@@ -65,7 +65,7 @@ When you start the container for the first time as described [below](#run-the-co
 
 ## Run the container
 ```
-docker run --volume polito-os161-vol:/home/os161user --name polito-os161 -it /bin/bash marcopalena/polito-os161
+docker run --volume polito-os161-vol:/home/os161user --name polito-os161 -it marcopalena/polito-os161 /bin/bash
 ```
 
 ## Attach VScode to the running container
