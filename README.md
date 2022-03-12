@@ -37,7 +37,7 @@ If you are using Linux, you can run the container natively using Docker Engine. 
 If you are using Windows, we suggest you to use Docker Desktop with WSL 2 backend. Follow these steps:
 - Enable the Windows Subsystem for Linux version 2 (WSL 2) feature on Windows. Refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
 - Download and install the [Linux kernel update package](https://docs.microsoft.com/windows/wsl/wsl2-kernel).
-- Install [Docker Desktop with WSL 2 backend](https://docs.docker.com/desktop/windows/wsl/).7
+- Install [Docker Desktop with WSL 2 backend](https://docs.docker.com/desktop/windows/wsl/).
 - Install [VSCode](https://code.visualstudio.com/).
 - Install the [Remote Development extension pack](https://aka.ms/vscode-remote/download/extension).
 - [Create a named volume](#create-a-named-volume) in WSL 2 to persist the container data
@@ -64,7 +64,9 @@ When you start the container for the first time as described [below](#run-the-co
   - `os161/root/`: the install directory of both kernel and userland.
 
 ## Run the container
-
+```
+docker run --volume polito-os161-vol:/home/os161user --name polito-os161 -it /bin/bash marcopalena/polito-os161
+```
 
 ## Attach VScode to the running container
 With the container running, use the shortcut 
