@@ -4,8 +4,7 @@ services:
   - docker
 script:
   - docker login --username ${DOCKER_USER} --password ${DOCKER_PASSWORD}
-  - docker pull ${DOCKER_USER}/${DOCKER_REPOSITORY}:latest
-  - docker build --cache-from ${DOCKER_USER}/${DOCKER_REPOSITORY}:latest --tag polito-os161 .
+  - docker build --cache-from ${DOCKER_USER}/${DOCKER_REPOSITORY}:latest --tag polito-os161 --build-arg BUILDKIT_INLINE_CACHE=1 .
 after_success:
   - docker login --username ${DOCKER_USER} --password ${DOCKER_PASSWORD}
   - export TAG=$(if [ "$TRAVIS_BRANCH" == "main" ]; then echo "latest"; else echo ${TRAVIS_BRANCH/\//-}; fi)
