@@ -4,6 +4,7 @@ services:
   - docker
 script:
   - docker login --username ${DOCKER_USER} --password ${DOCKER_PASSWORD}
+  - export DOCKER_BUILDKIT=1
   - docker build --cache-from ${DOCKER_USER}/${DOCKER_REPOSITORY}:latest --tag polito-os161 --build-arg BUILDKIT_INLINE_CACHE=1 .
 after_success:
   - docker login --username ${DOCKER_USER} --password ${DOCKER_PASSWORD}
