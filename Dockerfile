@@ -18,6 +18,7 @@ RUN apt-get --yes update && \
     apt-get install --yes --no-install-recommends \
         bmake \
         build-essential \
+        ca-certificates \
         curl \
         libgmp-dev \
         libmpc-dev \
@@ -82,7 +83,7 @@ USER ${USERNAME}
 COPY --chown=${USERNAME} --from=builder "${INSTALL_DIR}" "${OS_161_TOOLCHAIN}/"
 
 # Download and compile kernel source
-COPY --chown=${USERNAME} "build-kernel.sh" ".gdbinit.main" ".gdbinit.root" "${OS_161_ROOT}/"
+COPY --chown=${USERNAME} "build-kernel.sh" ".gdbinit.main" ".gdbinit.root" ".vscode" "${OS_161_ROOT}/"
 RUN cd "${OS_161_ROOT}" && \
     curl "${MIRROR}/${OS_161}.tar.gz" | tar -xz && mv "${OS_161}" "${OS_161_SRC}" && \
     ./build-kernel.sh \
@@ -91,7 +92,9 @@ RUN cd "${OS_161_ROOT}" && \
         -i "${OS_161_INSTALL}" && \
     cp "${OS_161_TOOLCHAIN}/share/examples/sys161/sys161.conf.sample" "${OS_161_INSTALL}/sys161.conf" && \
     mv ".gdbinit.main" "${USER_HOME}/.gdbinit" && \
-    mv ".gdbinit.root" "${OS_161_INSTALL}/.gdbinit" 
+    mv ".gdbinit.root" "${OS_161_INSTALL}/.gdbinit"  && \
+    mkdir "${OS_161_ROOT}/.vscode" && \
+    cp "${OS_161_ROOT}/*.json" "${OS_161_ROOT}/.vscode"
 
 # Set working directory
 WORKDIR ${USER_HOME}

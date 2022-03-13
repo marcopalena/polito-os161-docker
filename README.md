@@ -66,17 +66,32 @@ When you start the container for the first time as described [below](#run-the-co
   - `os161/root/`: the install directory of both kernel and userland.
 
 ## Run the container
+Run the container mounting the volume `polito-os161-vol` as the home folder of user `os161user`:
 ```
 docker run --volume polito-os161-vol:/home/os161user --name polito-os161 -it marcopalena/polito-os161 /bin/bash
 ```
 
 ## Attach VScode to the running container
-With the container running, use the shortcut 
+With the container running, use the shortcut <kbd>Ctrl</kbd>+<kbd>⇧ Shift</kbd>+<kbd>P</kbd> (<kbd>⌘ Cmd</kbd>+<kbd>⇧ Shift</kbd>+<kbd>P</kbd> on macOs) to open the Command Palette and execute run the **Remote-Containers: Attach to Running Container...**.
 
+You will be asked to confirm that attaching means you trust the container. You need to confirm this only once, the first time you attach to the container.
 
-you will be asked to confirm that attaching means you trust the container. This is only confirmed once.
+Select the `polito-os161` container. The first time you attach to it, VSCode will install a server inside the container. This allows us to install and run extensions inside the container, where they have full access to the tools, platform, and file system. Wait until the installation is complete, you should see something like this in the bottom left-hand corner.
+![Container Remote](https://user-images.githubusercontent.com/29371432/158079942-a0439449-0e18-4dd9-9726-1795a3f1ceee.png)
 
+Now you can go ahead to open the folder containing OS/161 inside the container by clicking on *File -> Open Folder* and searching for `/home/os161user/os161`. The window will reload with the opened folder.
+
+![open](https://user-images.githubusercontent.com/29371432/158080339-c345af3e-adea-44b4-9601-db11daffd741.png)
+
+## Configure VScode for working on OS/161
+
+Before starting to work on OS/161 using VSCode, we suggest to install the [C/C++ Extension](https://code.visualstudio.com/docs/languages/cpp).
+
+## Credits
+- The Dockerfile structure is inspired by https://github.com/johnramsden/os161-docker. 
+- VScode configuration is stolen from https://github.com/thomascristofaro/os161vscode (with some minor paths modifications).
 
 ## References
+* [The OS/161 Instructional Operating System](http://www.os161.org/)
 
 Licenced MIT

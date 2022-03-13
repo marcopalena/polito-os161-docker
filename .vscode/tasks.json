@@ -1,0 +1,54 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Copy Config",
+            "type": "shell",
+            "command": "cp ${env:HOME}/os161/kern/conf/DUMBVM conf/${input:VersionName}",
+            "problemMatcher": []
+        },
+        {
+            "label": "Run Config",
+            "type": "shell",
+            "command": "cd ${env:HOME}/os161/kern/conf/;./config ${input:VersionName}",
+            "problemMatcher": []
+        },
+        {
+            "label": "Make Depend",
+            "type": "shell",
+            "command": "cd ${env:HOME}/os161/kern/compile/${input:VersionName};bmake depend",
+            "problemMatcher": []
+        },
+        {
+            "label": "Build and Install",
+            "type": "shell",
+            "command": "cd ${env:HOME}/os161/kern/compile/${input:VersionName};bmake;bmake install",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Run OS161",
+            "type": "shell",
+            "command": "cd ${env:HOME}/os161/root;sys161 -w kernel",
+            "problemMatcher": []
+        },
+        {
+            "label": "Run OS161 (no debug)",
+            "type": "shell",
+            "command": "cd ${env:HOME}/os161/root;sys161 kernel",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "type": "promptString",
+            "id": "VersionName",
+            "description": "Kernel version name"
+        }
+    ]
+}
