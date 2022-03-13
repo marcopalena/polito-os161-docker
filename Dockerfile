@@ -18,7 +18,6 @@ RUN apt-get --yes update && \
     apt-get install --yes --no-install-recommends \
         bmake \
         build-essential \
-        ca-certificates \
         curl \
         libgmp-dev \
         libmpc-dev \
@@ -94,7 +93,7 @@ RUN cd "${OS_161_ROOT}" && \
     mv ".gdbinit.main" "${USER_HOME}/.gdbinit" && \
     mv ".gdbinit.root" "${OS_161_INSTALL}/.gdbinit"  && \
     mkdir "${OS_161_ROOT}/.vscode" && \
-    cp "${OS_161_ROOT}/*.json" "${OS_161_ROOT}/.vscode"
+    cp *.json "${OS_161_ROOT}/.vscode"
 
 # Set working directory
 WORKDIR ${USER_HOME}

@@ -55,8 +55,7 @@ mkdir </path/to/custom/volume/location>
 docker volume create --driver local \
                      --opt o=bind \
                      --opt type=none \
-                     --opt device=</path/to/custom/volume/location> \
-                     polito-os161-vol
+                     --opt device=</path/to/custom/volume/location> polito-os161-vol
 ```
 You can inspect the volume with:
 ```
@@ -80,8 +79,10 @@ With the container running, use the shortcut <kbd>Ctrl</kbd>+<kbd>⇧ Shift</kbd
 
 You will be asked to confirm that attaching means you trust the container. You need to confirm this only once, the first time you attach to the container.
 
-Select the `polito-os161` container. The first time you attach to it, VSCode will install a server inside the container. This allows us to install and run extensions inside the container, where they have full access to the tools, platform, and file system. Wait until the installation is complete, you should see something like this in the bottom left-hand corner.
-![vscode_container](https://user-images.githubusercontent.com/29371432/158082590-a3a20e4c-0f9c-45e0-88e5-198c5b6653c2.png)
+Select the `polito-os161` container. The first time you attach to it, VSCode will install a server inside the container. This allows us to install and run extensions inside the container, where they have full access to the tools, platform, and file system. Wait until the installation is complete, you should see something like this in the bottom left-hand corner:
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/29371432/158082590-a3a20e4c-0f9c-45e0-88e5-198c5b6653c2.png" />
+</p>
 
 Now you can go ahead to open the folder containing OS/161 inside the container by clicking on *File -> Open Folder* and searching for `/home/os161user/os161`. The window will reload with the opened folder.
 
