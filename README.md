@@ -52,7 +52,11 @@ docker volume create polito-os161-vol
 You may want to create the volume at a custom location, for instance a location in which your user has full privileges so that you are able to make changes to the OS/161 source both from within the container and from the host. In that case, use the following command instead:
 ```
 mkdir </path/to/custom/volume/location>
-docker volume create --driver local --opt o=bind --opt type=none --opt device=</path/to/custom/volume/location> polito-os161-vol
+docker volume create --driver local \
+                     --opt o=bind \
+                     --opt type=none \
+                     --opt device=</path/to/custom/volume/location> \
+                     polito-os161-vol
 ```
 You can inspect the volume with:
 ```
@@ -72,24 +76,26 @@ docker run --volume polito-os161-vol:/home/os161user --name polito-os161 -it mar
 ```
 
 ## Attach VScode to the running container
-With the container running, use the shortcut <kbd>Ctrl</kbd>+<kbd>⇧ Shift</kbd>+<kbd>P</kbd> (<kbd>⌘ Cmd</kbd>+<kbd>⇧ Shift</kbd>+<kbd>P</kbd> on macOs) to open the Command Palette and execute run the **Remote-Containers: Attach to Running Container...**.
+With the container running, use the shortcut <kbd>Ctrl</kbd>+<kbd>⇧ Shift</kbd>+<kbd>P</kbd> (or <kbd>⌘ Cmd</kbd>+<kbd>⇧ Shift</kbd>+<kbd>P</kbd> if you are on macOs) to open the *Command Palette* and run the **Remote-Containers: Attach to Running Container...** command.
 
 You will be asked to confirm that attaching means you trust the container. You need to confirm this only once, the first time you attach to the container.
 
 Select the `polito-os161` container. The first time you attach to it, VSCode will install a server inside the container. This allows us to install and run extensions inside the container, where they have full access to the tools, platform, and file system. Wait until the installation is complete, you should see something like this in the bottom left-hand corner.
-![Container Remote](https://user-images.githubusercontent.com/29371432/158079942-a0439449-0e18-4dd9-9726-1795a3f1ceee.png)
+![vscode_container](https://user-images.githubusercontent.com/29371432/158082590-a3a20e4c-0f9c-45e0-88e5-198c5b6653c2.png)
 
 Now you can go ahead to open the folder containing OS/161 inside the container by clicking on *File -> Open Folder* and searching for `/home/os161user/os161`. The window will reload with the opened folder.
 
-![open](https://user-images.githubusercontent.com/29371432/158080339-c345af3e-adea-44b4-9601-db11daffd741.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/29371432/158080339-c345af3e-adea-44b4-9601-db11daffd741.png" />
+</p>
 
 ## Configure VScode for working on OS/161
 
 Before starting to work on OS/161 using VSCode, we suggest to install the [C/C++ Extension](https://code.visualstudio.com/docs/languages/cpp).
 
 ## Credits
-- The Dockerfile structure is inspired by https://github.com/johnramsden/os161-docker. 
-- VScode configuration is stolen from https://github.com/thomascristofaro/os161vscode (with some minor paths modifications).
+- The Dockerfile structure is heavily inspired by https://github.com/johnramsden/os161-docker. 
+- VSCode configuration is stolen from https://github.com/thomascristofaro/os161vscode (after some minor paths modifications).
 
 ## References
 * [The OS/161 Instructional Operating System](http://www.os161.org/)
