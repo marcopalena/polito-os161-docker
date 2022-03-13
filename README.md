@@ -15,22 +15,22 @@ Follow the appropriate instructions to set up the remote development environment
 
 ### Linux
 If you are using Linux, you can run the container natively using Docker Engine. Follow these steps:
-- Install Docker Engine.
+1. Install Docker Engine.
   - Follow the official [install instructions for Docker Engine for your distribution](https://docs.docker.com/install/#supported-platforms).
   - Add your user to the `docker` group by running `sudo usermod -aG docker $USER`.
   - Sign out and back in again so your changes take effect.
-- Install [VSCode](https://code.visualstudio.com/).
-- Install the [Remote Development extension pack](https://aka.ms/vscode-remote/download/extension).
-- [Create a named volume](#create-a-named-volume) to persist the container data
+2. Install [VSCode](https://code.visualstudio.com/).
+3. Install the [Remote Development extension pack](https://aka.ms/vscode-remote/download/extension).
+4. [Create a named volume](#create-a-named-volume) to persist the container data
 
 ### Windows
 If you are using Windows, we suggest you to use Docker Desktop with WSL 2 backend. Follow these steps:
-- Enable the Windows Subsystem for Linux version 2 (WSL 2) feature on Windows. Refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
-- Download and install the [Linux kernel update package](https://docs.microsoft.com/windows/wsl/wsl2-kernel).
-- Install [Docker Desktop with WSL 2 backend](https://docs.docker.com/desktop/windows/wsl/).
-- Install [VSCode](https://code.visualstudio.com/).
-- Install the [Remote Development extension pack](https://aka.ms/vscode-remote/download/extension).
-- [Create a named volume](#create-a-named-volume) in WSL 2 to persist the container data
+1. Enable the Windows Subsystem for Linux version 2 (WSL 2) feature on Windows. Refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+2. Download and install the [Linux kernel update package](https://docs.microsoft.com/windows/wsl/wsl2-kernel).
+3. Install [Docker Desktop with WSL 2 backend](https://docs.docker.com/desktop/windows/wsl/).
+4. Install [VSCode](https://code.visualstudio.com/).
+5. Install the [Remote Development extension pack](https://aka.ms/vscode-remote/download/extension).
+6. [Create a named volume](#create-a-named-volume) in WSL 2 to persist the container data
 
 ## Pull the image
 You can pull the pre-built image directly from Docker Hub:
@@ -76,7 +76,7 @@ docker run --volume polito-os161-vol:/home/os161user --name polito-os161 -it mar
 Use the appropriate image name instead of `marcopalena/polito-os161` if you've built the image yourself.
 
 ## Attach VScode to the running container
-With the container running, use the shortcut <kbd>Ctrl</kbd>+<kbd>⇧ Shift</kbd>+<kbd>P</kbd> (or <kbd>⌘ Cmd</kbd>+<kbd>⇧ Shift</kbd>+<kbd>P</kbd> if you are on macOs) to open the *Command Palette* and run the **Remote-Containers: Attach to Running Container...** command.
+With the container running, use the shortcut <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> if you are on macOs) to open the *Command Palette* and run the **Remote-Containers: Attach to Running Container...** command.
 
 You will be asked to confirm that attaching means you trust the container. You need to confirm this only once, the first time you attach to the container.
 
