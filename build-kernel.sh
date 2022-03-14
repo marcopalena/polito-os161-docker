@@ -68,7 +68,6 @@ create_disk_images() {
 help() {
     printf "%s\n\t%s\n\t%s\n\t%s\n\t%s\n" "USAGE: $0" \
         "[-c CONF ]" \
-        "[-o OS_161 ]" \
         "[-s SOURCE_DIR ]" \
         "[-i INSTALL_DIR ]"
 }
@@ -80,12 +79,11 @@ main() {
     create_disk_images
 }
 
-options=':c:o:s:i:h'
+options=':c:s:i:h'
 while getopts $options option
 do
     case $option in
         c  ) CONF=${OPTARG};;
-        o  ) OS_161=${OPTARG};;
         s  ) SOURCE_DIR=${OPTARG};;
         i  ) INSTALL_DIR=${OPTARG};;
         h  ) help;;
@@ -98,7 +96,6 @@ done
 shift $((OPTIND - 1))
 
 echo "CONF=${CONF}"
-echo "OS_161=${OS_161}"
 echo "SOURCE_DIR=${SOURCE_DIR}"
 echo "INSTALL_DIR=${INSTALL_DIR}"
 
