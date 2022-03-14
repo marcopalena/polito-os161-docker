@@ -32,6 +32,13 @@ If you are using Windows, we suggest you to use Docker Desktop with WSL 2 backen
 5. Install the [Remote Development extension pack](https://aka.ms/vscode-remote/download/extension).
 6. [Create a named volume](#create-a-named-volume) in WSL 2 to persist the container data
 
+### macOS
+If you are using macOs, we suggest you to use Docker Desktop:
+1. Install [Docker Desktop for Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac). Be sure to select the appropriate version depending on whether your Mac has Intel or Apple silicon.
+2. Install [VSCode](https://code.visualstudio.com/).
+3. Install the [Remote Development extension pack](https://aka.ms/vscode-remote/download/extension).
+4. [Create a named volume](#create-a-named-volume) to persist the container data
+
 ## Pull the image
 You can pull the pre-built image directly from Docker Hub:
 ```
@@ -97,7 +104,7 @@ Before starting to work on OS/161 using VSCode, we suggest to install the [C/C++
 
 ## Credits
 - The Dockerfile structure is heavily inspired by https://github.com/johnramsden/os161-docker. 
-- VSCode configuration is stolen from https://github.com/thomascristofaro/os161vscode (after some minor paths modifications).
+- VSCode configuration is taken from https://github.com/thomascristofaro/os161vscode (after some minor paths modifications).
 
 ## References
 * [The OS/161 Instructional Operating System](http://www.os161.org/)
