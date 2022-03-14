@@ -3,11 +3,11 @@ sudo: required
 services:
   - docker
 script:
-  - docker login --username ${DOCKER_USER} --password ${DOCKER_PASSWORD}
+  - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USER} --password-stdin
   - export DOCKER_BUILDKIT=1
   - docker build --cache-from ${DOCKER_USER}/${DOCKER_REPOSITORY}:latest --tag polito-os161 --build-arg BUILDKIT_INLINE_CACHE=1 .
 after_success:
-  - docker login --username ${DOCKER_USER} --password ${DOCKER_PASSWORD}
+  - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USER} --password-stdin
   - export TAG=$(if [ "$TRAVIS_BRANCH" == "main" ]; then echo "latest"; else echo ${TRAVIS_BRANCH/\//-}; fi)
   - docker tag ${DOCKER_REPOSITORY} ${DOCKER_USER}/${DOCKER_REPOSITORY}:${TRAVIS_BUILD_NUMBER}
   - docker push ${DOCKER_USER}/${DOCKER_REPOSITORY}:${TRAVIS_BUILD_NUMBER}

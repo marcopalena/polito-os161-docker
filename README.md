@@ -91,7 +91,7 @@ Now you can go ahead to open the folder containing OS/161 inside the container b
   <img src="https://user-images.githubusercontent.com/29371432/158080339-c345af3e-adea-44b4-9601-db11daffd741.png" />
 </p>
 
-## Configure VScode for working on OS/161
+## Configure VScode to work on OS/161
 
 Before starting to work on OS/161 using VSCode, we suggest to install the [C/C++ Extension](https://code.visualstudio.com/docs/languages/cpp).
 
