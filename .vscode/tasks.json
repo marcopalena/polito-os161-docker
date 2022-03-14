@@ -6,25 +6,25 @@
         {
             "label": "Copy Config",
             "type": "shell",
-            "command": "cp ${env:HOME}/os161/kern/conf/DUMBVM conf/${input:VersionName}",
+            "command": "cp ${env:HOME}/os161/src/kern/conf/DUMBVM ${env:HOME}/os161/src/kern/conf/${input:VersionName}",
             "problemMatcher": []
         },
         {
             "label": "Run Config",
             "type": "shell",
-            "command": "cd ${env:HOME}/os161/kern/conf/;./config ${input:VersionName}",
+            "command": "cd ${env:HOME}/os161/src/kern/conf/;./config ${input:VersionName}",
             "problemMatcher": []
         },
         {
             "label": "Make Depend",
             "type": "shell",
-            "command": "cd ${env:HOME}/os161/kern/compile/${input:VersionName};bmake depend",
+            "command": "cd ${env:HOME}/os161/src/kern/compile/${input:VersionName};bmake depend",
             "problemMatcher": []
         },
         {
             "label": "Build and Install",
             "type": "shell",
-            "command": "cd ${env:HOME}/os161/kern/compile/${input:VersionName};bmake;bmake install",
+            "command": "cd ${env:HOME}/os161/src/kern/compile/${input:VersionName};bmake;bmake install",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
