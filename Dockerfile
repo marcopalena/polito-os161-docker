@@ -93,7 +93,7 @@ RUN cd "${OS_161_ROOT}" && \
     mv ".gdbinit.main" "${USER_HOME}/.gdbinit" && \
     mv ".gdbinit.root" "${OS_161_INSTALL}/.gdbinit"  && \
     mkdir "${OS_161_ROOT}/.vscode" && \
-    cp *.json "${OS_161_ROOT}/.vscode"
+    mv *.json "${OS_161_ROOT}/.vscode"
 
 # Set working directory
 WORKDIR ${USER_HOME}
