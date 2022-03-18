@@ -102,6 +102,22 @@ Now you can go ahead to open the folder containing OS/161 inside the container b
 
 Before starting to work on OS/161 using VSCode, we suggest to install the [C/C++ Extension](https://code.visualstudio.com/docs/languages/cpp).
 
+If you are using macOs, chances are that the C/C++ extension won't work correctly out-of-the-box within the container. If you get an error like this one when trying to launch the debugger:
+```
+Launching server using command /home/os161user/.vscode-server/extensions/ms-vscode.cpptools-<CPPTOOLS_VERSION>/bin failed.
+```
+you can try the following workaround:
+1. Log into a terminal session within the container (the open session in the Terminal panel of VSCode works just fine).
+2. Navigate to the directory containing the C/C++ extension binaries.
+```
+cd /home/os161user/.vscode-server/extensions/ms-vscode.cpptools-<CPPTOOLS_VERSION>/bin
+```
+3. Add execution permissions to `cpptools` and `cpptools-srv`.
+```
+chmod +x cpptools
+chmod +x cpptools-srv
+```
+
 ## Credits
 - The Dockerfile structure is heavily inspired by https://github.com/johnramsden/os161-docker. 
 - VSCode configuration is taken from https://github.com/thomascristofaro/os161vscode (after some minor paths modifications).
