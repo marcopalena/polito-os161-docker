@@ -1,0 +1,10 @@
+---
+services:
+  os161:
+    image: marcopalena/polito-os161
+    stdin_open: true  # keep the container up and running even when detached
+    volumes:
+      - polito-os161-vol:/home/os161user
+
+volumes:
+  polito-os161-vol:
