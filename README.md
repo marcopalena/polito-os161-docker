@@ -80,6 +80,12 @@ Run the container mounting the volume `polito-os161-vol` as the home folder of u
 ```
 docker run --volume polito-os161-vol:/home/os161user --name polito-os161 -it marcopalena/polito-os161 /bin/bash
 ```
+or, using docker-compose:
+```
+docker-compose up -d
+```
+which will also automatically create the `polito-os161-vol` Docker volume, if you haven't already done so.
+
 Use the appropriate image name instead of `marcopalena/polito-os161` if you've built the image yourself.
 
 ## Attach VScode to the running container
