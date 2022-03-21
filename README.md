@@ -89,7 +89,9 @@ which will also automatically create the `polito-os161-vol` Docker volume, if yo
 Use the appropriate image name instead of `marcopalena/polito-os161` if you've built the image yourself.
 
 ## Attach VScode to the running container
-With the container running, use the shortcut <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> if you are on macOs) to open the *Command Palette* and run the **Remote-Containers: Attach to Running Container...** command.
+Click on the Manage button in the bottom left, then "Extensions" and ensure that you have the "Remote - Containers" extension installed. (You can also open the Extensions tab with <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd> or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd> on macOS.)
+
+With the container running, use the shortcut <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> if you are on macOS) to open the *Command Palette* and run the **Remote-Containers: Attach to Running Container...** command.
 
 You will be asked to confirm that attaching means you trust the container. You need to confirm this only once, the first time you attach to the container.
 
