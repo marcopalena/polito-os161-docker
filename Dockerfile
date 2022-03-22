@@ -22,7 +22,8 @@ RUN apt-get --yes update && \
         libgmp-dev \
         libmpc-dev \
         libmpfr-dev \
-        libncurses-dev && \
+        libncurses-dev \
+        sudo && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -73,9 +74,10 @@ ARG OS_161="os161-base-2.0.3"
 ENV PATH="${OS_161_TOOLCHAIN}/bin:${PATH}"
 
 # Create and set user
-RUN useradd --create-home --home-dir "${USER_HOME}" --shell=/bin/bash --user-group "${USERNAME}" && \
+RUN useradd --create-home --home-dir "${USER_HOME}" --shell=/bin/bash --user-group "${USERNAME}" --groups sudo && \
     mkdir -p "${OS_161_ROOT}" && \
-    chown "${USERNAME}:${USERNAME}" "${OS_161_ROOT}"
+    chown "${USERNAME}:${USERNAME}" "${OS_161_ROOT}" && \
+    echo "${USERNAME}:os161" | chpasswd
 USER ${USERNAME}
 
 # Copy toolchain binaries and links from builder stage
