@@ -88,6 +88,12 @@ which will also automatically create the `polito-os161-vol` Docker volume, if yo
 
 Use the appropriate image name instead of `marcopalena/polito-os161` if you've built the image yourself.
 
+You can install custom packages (such as `git`) with:
+1. `sudo apt update`
+2. `sudo apt install <pkgname>`
+
+The sudo password for os161user is `os161`.
+
 ## Attach VScode to the running container
 Click on the Manage button in the bottom left, then "Extensions" and ensure that you have the "Remote - Containers" extension installed. (You can also open the Extensions tab with <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd> or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd> on macOS.)
 
