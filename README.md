@@ -44,11 +44,22 @@ You can pull the pre-built image directly from Docker Hub:
 ```
 docker pull marcopalena/polito-os161:latest
 ```
+or, with docker compose:
+```
+docker compose pull
+```
+Be sure to pull the image before starting the container with docker compose for the first time (as described [later](#run-the-container), otherwise docker compose will rebuild a local version of the image from scratch.
+
+Note than the pre-built image is targeted at the `amd64` platform. If you are on a M1 Mac you need to build your own image for your local platform.
 
 ## Build the image 
 Alternatively you can build your own image by cloning this repository and building from source:
 ```
 docker build -t polito-os161 .
+```
+or, using docker compose:
+```
+docker compose build
 ```
 
 ## Create a named volume
@@ -69,6 +80,12 @@ You can inspect the volume with:
 docker volume inspect polito-os161-vol
 ``` 
 
+If you are using docker compose there is no need to create a volume beforehand. By default docker compose will create a volume named `polito-os161-vol` using the default location in the host filesystem. You can customize the location of the volume by editing the variables in the `.env` file like this:
+```
+MOUNTPOINT=/path/to/mount/point/
+MOUNTPOINT_TYPE=custom
+``` 
+
 When you start the container for the first time as described [below](#run-the-container), the volume will be populated with the content of the `/home/os161user/` folder that comes pre-stored in the container. The volume is then mount in the container so that any change made to the content of that folder will be persisted on the host filesystem. The content of such a folder is the following:
 - `/home/os161user/`
   - `os161/src/`: contains the source code of both kernel and userland.
@@ -78,12 +95,25 @@ When you start the container for the first time as described [below](#run-the-co
 ## Run the container
 Run the container mounting the volume `polito-os161-vol` as the home folder of user `os161user`:
 ```
-docker run --volume polito-os161-vol:/home/os161user --name polito-os161 -it marcopalena/polito-os161 /bin/bash
+docker run --volume polito-os161-vol:/home/os161user --name polito-os161 -itd marcopalena/polito-os161 /bin/bash
 ```
 Use the appropriate image name instead of `marcopalena/polito-os161` if you've built the image yourself.
+Alternatively, using docker compose:
+```
+docker compose up -d
+```
+which will also automatically create the `polito-os161-vol` Docker volume, if you haven't already done so. 
+
+You can install custom packages in the container (such as `git`) with:
+1. `sudo apt update`
+2. `sudo apt install <pkgname>`
+
+The sudo password for os161user is `os161`. Note that the installed packages will not be stored in the volume, therefore they will not be persisted if you destroy and recreate the container. They will however still be available if you stop and restart the container.
 
 ## Attach VScode to the running container
-With the container running, use the shortcut <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> if you are on macOs) to open the *Command Palette* and run the **Remote-Containers: Attach to Running Container...** command.
+Click on the Manage button in the bottom left, then "Extensions" and ensure that you have the "Remote - Containers" extension installed. (You can also open the Extensions tab with <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd> or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd> on macOS.)
+
+With the container running,  use the shortcut <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> if you are on macOS) to open the *Command Palette* and run the **Remote-Containers: Attach to Running Container...** command.
 
 You will be asked to confirm that attaching means you trust the container. You need to confirm this only once, the first time you attach to the container.
 

@@ -1,0 +1,27 @@
+---
+version: '3.8'
+services:
+  os161:
+    image: marcopalena/polito-os161:latest
+    container_name: polito-os161
+    stdin_open: true
+    build:
+      context: .
+      cache_from:
+        - marcopalena/polito-os161:latest
+    environment:
+        - MOUNTPOINT=${MOUNTPOINT}
+        - MOUNTPOINT_TYPE=${MOUNTPOINT_TYPE}
+    volumes:
+      - polito-os161-vol-${MOUNTPOINT_TYPE-default}:/home/os161user
+
+volumes:
+  polito-os161-vol-custom:
+    name: polito-os161-vol
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '${MOUNTPOINT}'
+  polito-os161-vol-default:
+    name: polito-os161-vol
