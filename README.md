@@ -40,7 +40,7 @@ If you are using macOs, we suggest you to use Docker Desktop:
 4. [Create a named volume](#create-a-named-volume) to persist the container data
 
 ## Pull the image
-You can pull the pre-built image directly from Docker Hub:
+If you are using an x86-64 machine you can pull the pre-built image directly from Docker Hub:
 ```
 docker pull marcopalena/polito-os161:latest
 ```
@@ -50,7 +50,7 @@ docker compose pull
 ```
 Be sure to pull the image before starting the container with docker compose for the first time (as described [later](#run-the-container), otherwise docker compose will rebuild a local version of the image from scratch.
 
-Note than the pre-built image is targeted at the `amd64` platform. If you are on a M1 Mac you need to build your own image for your local platform.
+** NOTE** that the pre-built image is targeted at the `amd64` platform. If you are using Apple silicon you need to build your own image for your local platform.
 
 ## Build the image 
 Alternatively you can build your own image by cloning this repository and building from source:
