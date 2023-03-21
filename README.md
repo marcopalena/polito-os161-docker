@@ -50,7 +50,7 @@ docker compose pull
 ```
 Be sure to pull the image before starting the container with docker compose for the first time (as described [later](#run-the-container), otherwise docker compose will rebuild a local version of the image from scratch.
 
-** NOTE** that the pre-built image is targeted at the `amd64` platform. If you are using Apple silicon you need to build your own image for your local platform.
+**NOTE** that the pre-built image is targeted at the `amd64` platform. If you are using Apple silicon you need to build your own image for your local platform.
 
 ## Build the image 
 Alternatively you can build your own image by cloning this repository and building from source:
