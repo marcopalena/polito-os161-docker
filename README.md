@@ -148,6 +148,11 @@ chmod +x cpptools
 chmod +x cpptools-srv
 ```
 
+## VSCode tasks
+The repository contains a set of tasks that can be used to compile, run, debug OS/161 and more. Tasks are defined in `.vscode/tasks.json`.
+
+You can run a task by pressing `CTRL+SHIFT+P` -> `Tasks: Run Task` and selecting the desired task.
+
 ## Credits
 - The Dockerfile structure is heavily inspired by https://github.com/johnramsden/os161-docker. 
 - VSCode configuration is taken from https://github.com/thomascristofaro/os161vscode (after some minor paths modifications).

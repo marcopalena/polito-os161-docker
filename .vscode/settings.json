@@ -3,6 +3,15 @@
         "autoconf.h": "c",
         "lib.h": "c",
         "opt-noasserts.h": "c",
-        "version.h": "c"
-    }
+        "version.h": "c",
+        "types.h": "c",
+        "cpu.h": "c",
+        "thread.h": "c",
+        "spinlock.h": "c",
+        "synch.h": "c",
+        "current.h": "c",
+        "trapframe.h": "c"
+    },
+
+    "liveServer.settings.root": "doxygen/html"
 }

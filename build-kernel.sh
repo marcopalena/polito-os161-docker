@@ -3,8 +3,9 @@
 set -e
 
 CONF="DUMBVM"
-SOURCE_DIR="/home/os161user/os161/src"
-INSTALL_DIR="/home/os161user/os161/root"
+BASE_DIR="/home/os161user/os161"
+SOURCE_DIR="${BASE_DIR}/src"
+INSTALL_DIR="${BASE_DIR}root"
 
 build_userland() {
     echo '*** Building the OS/161 userland ***'
@@ -65,6 +66,21 @@ create_disk_images() {
     fi
 }
 
+build_doc() {
+    echo '*** Build OS161 Doc ***'
+    if ! (
+        set -e
+        cd "${BASE_DIR}"
+        if [ -d "doxygen/html" ]; then
+            rm -rf doxygen/html
+        fi
+        cd doxygen && doxygen
+    ) > /tmp/os161_doc.log; then
+        tail /tmp/os161_doc.log
+        exit 1
+    fi
+}
+
 help() {
     printf "%s\n\t%s\n\t%s\n\t%s\n\t%s\n" "USAGE: $0" \
         "[-c CONF ]" \
@@ -77,6 +93,7 @@ main() {
     configure_kernel
     compile_kernel
     create_disk_images
+    build_doc
 }
 
 options=':c:s:i:h'

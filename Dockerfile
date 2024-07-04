@@ -22,6 +22,8 @@ RUN apt-get --yes update && \
         libgmp-dev \
         libmpc-dev \
         libmpfr-dev \
+        doxygen \
+        git \
         libncurses-dev \
         sudo && \
     apt-get clean && \
@@ -84,9 +86,11 @@ USER ${USERNAME}
 COPY --chown=${USERNAME} --from=builder "${INSTALL_DIR}" "${OS_161_TOOLCHAIN}/"
 
 # Download and compile kernel source
-COPY --chown=${USERNAME} "build-kernel.sh" ".gdbinit.main" ".gdbinit.root" ".vscode" "${OS_161_ROOT}/"
+COPY --chown=${USERNAME} "build-kernel.sh" ".gdbinit.main" ".gdbinit.root" ".vscode" "doxyfile" "${OS_161_ROOT}/"
 RUN cd "${OS_161_ROOT}" && \
     curl "${MIRROR}/${OS_161}.tar.gz" | tar -xz && mv "${OS_161}" "${OS_161_SRC}" && \
+    mkdir "doxygen" && \
+    mv "doxyfile" "doxygen/doxyfile" && \
     ./build-kernel.sh \
         -c "DUMBVM" \
         -s "${OS_161_SRC}" \

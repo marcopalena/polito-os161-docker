@@ -42,6 +42,18 @@
             "type": "shell",
             "command": "cd ${env:HOME}/os161/root;sys161 kernel",
             "problemMatcher": []
+        },
+        {
+            "label": "Build Doxygen",
+            "type": "shell",
+            "command": "rm -rf $HOME/os161/doxygen/html && cd $HOME/os161/doxygen && doxygen",
+            "problemMatcher": []
+        },
+        {
+            "label": "Open Doxygen",
+            "type": "shell",
+            "command": "${command:extension.liveServer.goOnline}",
+            "problemMatcher": []
         }
     ],
     "inputs": [
